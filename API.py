@@ -1,6 +1,6 @@
 # Autor: Gabriel Antonio Cavichioli | Data: 15/05/24.
 
-from clscoppeliasim_zmqremoteapi_client import RemoteAPIClient # type: ignore
+from coppeliasim_zmqremoteapi_client import RemoteAPIClient # type: ignore
 
 client = RemoteAPIClient()
 sim = client.require('sim')
