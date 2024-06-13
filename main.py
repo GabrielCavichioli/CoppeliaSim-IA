@@ -2,23 +2,23 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-# Passo 1: Definir a classe da rede neural
-class MinhaRedeNeural(nn.Module):
-    def __init__(self):
-        super(MinhaRedeNeural, self).__init__()
+# Passo 1: Definir a classe da rede neural, ou seja, definir o modelo dela, entradas, camadas ocultas, saídas e comportamento de forward
+class RedeNeural(nn.Module):
+    def __init__(self): # Inicializando a classe da RedeNeural
+        super(RedeNeural, self).__init__() # Inicializando a superclasse de nn.Module
         # Definir as camadas da rede
-        self.camada_oculta = nn.Linear(2, 3)  # Camada oculta com 2 entradas e 3 saídas
+        self.camada_entrada= nn.Linear(2, 3)  # Camada de entrada com 2 entradas e 3 saídas
         self.activation = nn.ReLU()           # Função de ativação ReLU
         self.camada_saida = nn.Linear(3, 1)   # Camada de saída com 3 entradas e 1 saída
         
     def forward(self, x):
         # Definir o fluxo de dados na rede
-        x = self.activation(self.camada_oculta(x))  # Aplicar camada oculta e ReLU
+        x = self.activation(self.camada_entrada(x))  # Aplicar camada de entrada e ReLU
         x = self.camada_saida(x)                    # Aplicar camada de saída
         return x
 
 # Passo 2: Criar uma instância do modelo
-modelo = MinhaRedeNeural()
+modelo = RedeNeural()
 
 # Passo 3: Definir a função de perda e o otimizador
 criterio = nn.MSELoss()                       # Função de perda: Mean Squared Error (MSE)
